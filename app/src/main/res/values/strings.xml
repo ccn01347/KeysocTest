@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">KeysocTest</string>
+    <string name="title_albumes">Albums</string>
+    <string name="title_bookmarks">Bookmarks</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>
