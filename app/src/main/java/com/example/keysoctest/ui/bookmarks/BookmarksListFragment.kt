@@ -34,12 +34,7 @@ class BookmarksListFragment: Fragment() {
         viewModel = BookmarksListViewModel(viewLifecycleOwner)
         viewModel.adapter.observe(viewLifecycleOwner, Observer {
 
-            Log.d("STEVE-DEBUG", it.size.toString())
-            Log.d("STEVE-DEBUG", (recyclerView.adapter as BookmarksRecylerAdapter).viewModels?.size.toString())
-
             (recyclerView.adapter as BookmarksRecylerAdapter).setData(it)
-            Log.d("STEVE-DEBUG", adapter.viewModels?.size.toString())
-            Log.d("STEVE-DEBUG", (recyclerView.adapter as BookmarksRecylerAdapter).viewModels?.size.toString())
 
         })
 
