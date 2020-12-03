@@ -1,6 +1,7 @@
 package com.example.keysoctest.ui.bookmarks
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,11 +28,19 @@ class BookmarksListFragment: Fragment() {
         recyclerView = root.findViewById(R.id.id_albums_recylerview)
 
         // 1.b.
-
+        adapter = BookmarksRecylerAdapter(emptyList())
+        recyclerView.adapter = adapter
         // 2. Binding
         viewModel = BookmarksListViewModel(viewLifecycleOwner)
         viewModel.adapter.observe(viewLifecycleOwner, Observer {
-            recyclerView.adapter = it
+
+            Log.d("STEVE-DEBUG", it.size.toString())
+            Log.d("STEVE-DEBUG", (recyclerView.adapter as BookmarksRecylerAdapter).viewModels?.size.toString())
+
+            (recyclerView.adapter as BookmarksRecylerAdapter).setData(it)
+            Log.d("STEVE-DEBUG", adapter.viewModels?.size.toString())
+            Log.d("STEVE-DEBUG", (recyclerView.adapter as BookmarksRecylerAdapter).viewModels?.size.toString())
+
         })
 
         return root

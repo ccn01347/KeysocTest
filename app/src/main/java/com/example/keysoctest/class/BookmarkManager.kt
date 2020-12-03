@@ -13,10 +13,13 @@ class BookmarkManager {
     fun bookmarkAlbums(album: KSAlbums){
         var current = tempBookmarkAlums.value
 
-        // 1. check to avoid duplicate
-        if (current!!.indexOfFirst { it.collectionId == album.collectionId } >= 0){
+        if (current!!.contains(album)){
             return
         }
+        // 1. check to avoid duplicate
+//        if (current!!.indexOfFirst { it.collectionId == album.collectionId } >= 0){
+//            return
+//        }
         // 2. Add into array and post value
         // 2.a. These part should write data into database for production purpose.
         current!!.add(album)
@@ -26,11 +29,15 @@ class BookmarkManager {
     fun removeBookmark(album: KSAlbums){
         var current = tempBookmarkAlums.value
 
-        // 1. check to avoid duplicate
-        if (current!!.indexOfFirst { it.collectionId == album.collectionId } < 0){
-            return
+        if (current!!.contains(album)){
+            current!!.remove(album)
         }
-        current!!.remove(album)
+//        // 1. check to avoid duplicate
+//        if (current!!.indexOfFirst { it.collectionId == album.collectionId } < 0){
+//            return
+//        }
+//        current!!.remove(album)
+////        tempBookmarkAlums.value = current
         tempBookmarkAlums.postValue(current)
     }
 
@@ -39,3 +46,5 @@ class BookmarkManager {
         return index >= 0
     }
 }
+
+

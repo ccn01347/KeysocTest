@@ -10,7 +10,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class BookmarksListViewModel(owner: LifecycleOwner) {
-    var adapter: MutableLiveData<BookmarksRecylerAdapter> = MutableLiveData()
+    var adapter: MutableLiveData<List<KSAlumsBookmarkViewModel>> = MutableLiveData()
 
     init {
         BookmarkManager.shared.tempBookmarkAlums.observe(owner, androidx.lifecycle.Observer {
@@ -19,7 +19,7 @@ class BookmarksListViewModel(owner: LifecycleOwner) {
                 list.add(KSAlumsBookmarkViewModel(album, true))
             }
 
-            adapter.postValue(BookmarksRecylerAdapter(list))
+            adapter.postValue(list)
         })
     }
 
